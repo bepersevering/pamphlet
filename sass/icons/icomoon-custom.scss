@@ -1,0 +1,104 @@
+$normal-color: #adafb6;
+$hover-color: #02a2fd;
+
+.icon-icon_like_normal_gray:before {
+  content: "\e91c";
+  color: $normal-color;
+}
+
+.icomoon {
+  font-family: 'icomoon' !important;
+}
+
+.icon-icon_back-to-center:before {
+  opacity: .8;
+}
+
+.icon-icon_back-to-center:hover:before {
+  opacity: 1;
+}
+
+.icon-icon_unfold:before {
+  color:  $hover-color;
+}
+
+.icon-icon_arrows_up:before {
+  content: "\e903";
+  color: #adafb6;
+  display: inline-block;
+  transform:rotate(180deg);
+}
+
+.icon-icon_right-arrow:before {
+  color:  $hover-color;
+}
+
+.icon-icon_down-arrow:before {
+  content: "\e91d";
+  display: inline-block;
+  transform:rotate(90deg);
+  color:  #727682;
+}
+
+.icon-icon_up-arrow:before {
+  content: "\e91d";
+  display: inline-block;
+  transform:rotate(-90deg);
+  color:  #727682;
+}
+
+.icon-icon_search:before {
+  color: #727682;
+}
+
+.icon-icon_notices:before {
+  color: #727682;
+}
+
+.icon-spin-blank:before {
+  content: "\e911";
+}
+
+.icon-icon_more:hover:before {
+  color:  $hover-color;
+}
+.icon-icon_more:before {
+  color: $normal-color;
+}
+
+.icon-icon_like:hover:before {
+  color:  $hover-color;
+}
+
+.icon-icon_like_gray:before {
+  content: "\e914";
+  color: $normal-color;
+}
+
+.icon-icon_like_selected:before {
+  color: $normal-color;
+}
+
+.icon-icon_attachfiles:before {
+  color:  #434959 ;
+}
+.icon-icon_dropdownup:before {
+  color:  $hover-color !important;
+}
+.icon-icon_photo_delete:before{
+  content: "\e924";
+  color:#CBD1DF;
+}
+.icon-down_smaller{
+  vertical-align: middle;
+  transform: scale(.4);
+}
+.icon-icon_draft_add:before {
+  content: "\e925";
+  color: #CBD1DF;
+}
+
+.icon-icon_collect_selected:before {
+  content: "\e90b";
+  color: #0F70E7;
+}
