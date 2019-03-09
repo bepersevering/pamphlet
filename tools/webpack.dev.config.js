@@ -18,17 +18,24 @@ const webpackConfigDev = {
       IS_DEVELOPMETN: true,
     }),
     new OpenBrowserPlugin({
-      url: `http://localhost:${PORT}/#/login`,
+      url: `http://localhost:${PORT}/`,
     }),
   ],
   devtool: 'source-map',
   devServer: {
-    contentBase: resolve('../src'),
-    historyApiFallback: false,
-    hot: false,
-    host: '0.0.0.0',
-    port: PORT,
+    port: 3000,
+    open: true,
+    proxy: {
+      "/api": "http://localhost:5000"
+    }
   },
+  // devServer: {
+  //   contentBase: resolve('../server'),
+  //   historyApiFallback: false,
+  //   hot: false,
+  //   host: '0.0.0.0',
+  //   port: PORT,
+  // },
 }
 
 module.exports = merge(webpackConfigBase, webpackConfigDev)
