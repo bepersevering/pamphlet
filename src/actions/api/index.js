@@ -1,6 +1,7 @@
-import { generate } from '../utils/apiGenerator';
+import {generate} from '../utils/apiGenerator';
+
 import article from './article';
-import user from "./user";
+import user from './user';
 import hello from './hello';
 
 const api = {

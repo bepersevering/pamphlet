@@ -1,7 +1,8 @@
 // server/app.js
+const path = require('path');
+
 const express = require('express');
 const morgan = require('morgan');
-const path = require('path');
 
 const app = express();
 
@@ -11,14 +12,18 @@ app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:htt
 // Serve static assets
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
-app.use('/api/hello', (req, res, next) => {
-    res.status(200).json({"hello": "Hello World!"});
-    next();
-  });  
+/*
+ * app.use('/api/hello', (req, res, next) => {
+ *   res.status(200).json({hello: 'Hello World!'});
+ *   next();
+ * });
+ */
 
-// Always return the main index.html, so react-router render the route in the client
-// app.get('*', (req, res) => {
-//   res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
-// });
+/*
+ * Always return the main index.html, so react-router render the route in the client
+ * app.get('*', (req, res) => {
+ *   res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
+ * });
+ */
 
 module.exports = app;

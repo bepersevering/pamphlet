@@ -1,19 +1,15 @@
-import axios from "axios";
+import axios from 'axios';
 
 axios.interceptors.request.use(
-  config => {
+  (config) => {
     // can add common header for all request
     if (!config.headers) {
-      config.headers = {
-        "Content-Type": "application/json"
-      };
+      config.headers = {'Content-Type': 'application/json'};
     }
-    config.headers["X-Requested-With"] = "XMLHttpRequest";
+    config.headers['X-Requested-With'] = 'XMLHttpRequest';
     return config;
   },
-  err => {
-    return Promise.reject(err);
-  }
+  (err) => Promise.reject(err)
 );
 
 export default axios;
