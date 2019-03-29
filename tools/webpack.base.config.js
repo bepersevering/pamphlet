@@ -2,6 +2,8 @@
 const path = require('path');
 
 const webpack = require('webpack');
+const adaptive = require('postcss-adaptive');
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -9,8 +11,22 @@ function resolve(relatedPath) {
   return path.join(__dirname, relatedPath);
 }
 
+const adaptiveLoaderConfig =  {
+  loader:  'postcss-loader',
+  options: {
+    ident:   'postcss',
+    plugins: () => [
+      adaptive({
+        remUnit: 37.5,
+        autoRem: false,
+        baseDpr: 1
+      })
+    ]
+  }
+};
+
 const webpackConfigBase = {
-  entry:  {client: resolve('../src/index.js'), },
+  entry:  {client: resolve('../src/index.js'),},
   output: {
     path:          resolve('../dist'),
     filename:      '[name].[hash:4].js',
@@ -23,7 +39,7 @@ const webpackConfigBase = {
     ],
     alias:      {components: path.join(__dirname, '/../src/components')},
   },
-  resolveLoader: {moduleExtensions: ['-loader'], },
+  resolveLoader: {moduleExtensions: ['-loader'],},
   optimization:  {
     splitChunks: {
       chunks:                 'async',
@@ -77,6 +93,39 @@ const webpackConfigBase = {
         }),
       },
       {
+        test:    /\.scss$/,
+        exclude: /node_modules/,
+        use:     [
+          {loader: 'style-loader'},
+          {
+            loader:  'css-loader',
+            options: {importLoaders: 2}
+          },
+          adaptiveLoaderConfig,
+          {loader: 'sass-loader'}
+        ]
+      },
+
+      /*
+       * {
+       *   test:     /\.scss$/,
+       *   exclude:  /node_modules/,
+       *   loader:   ExtractTextPlugin.extract({
+       *     fallback: 'style',
+       *     use:      [
+       *       {
+       *         loader:  'css',
+       *         options: {sourceMap: true}
+       *       },
+       *       {
+       *         loader:  'scss-loader',
+       *         options: {sourceMap: true}
+       *       }
+       *     ]
+       *   }),
+       * },
+       */
+      {
         test:   /\.less$/,
         loader: ExtractTextPlugin.extract({
           fallback: 'style',
@@ -114,7 +163,7 @@ const webpackConfigBase = {
     // 提取css
     new ExtractTextPlugin('style.[hash:4].css'),
     // 将打包后的资源注入到html文件内
-    new HtmlWebpackPlugin({template: resolve('/../public/index.html'), }),
+    new HtmlWebpackPlugin({template: resolve('/../public/index.html'),}),
 
     /*
      * new webpack.optimize.CommonsChunkPlugin({

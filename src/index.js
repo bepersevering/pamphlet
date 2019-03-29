@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Provider from 'react-redux';
-import {AppContainer} from 'react-hot-loader';
 
 import './index.css';
 import App from './components/App';
-// import registerServiceWorker from './registerServiceWorker';
+import Main from './components/App/Main';
 
-const mountNode = document.getElementById('app');
+// ReactDOM.render(<App />, document.getElementById('root'));
 
-ReactDOM.render(<App />, document.getElementById('root'));
+
+ReactDOM.render(<Main/>, document.getElementById('root'));
+
 // registerServiceWorker();
 
 

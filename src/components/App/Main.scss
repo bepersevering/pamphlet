@@ -1,7 +1,22 @@
-#components-layout-demo-top .logo {
-  width: 120px;
-  height: 31px;
-  background: rgba(255,255,255,.2);
-  margin: 16px 24px 16px 0;
-  float: left;
+@import "~antd/dist/antd.css";
+
+.App {
+  text-align: center;
+}
+
+.App-header h1 {
+  color: whitesmoke;
+}
+
+.App-header h1 {
+  color: whitesmoke;
+}
+
+.App-content {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.App-footer {
+  
 }
